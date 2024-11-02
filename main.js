@@ -31,8 +31,11 @@ fetch("https://www.course-api.com/javascript-store-products")
         });
     })
     .catch(error => {
-        console.error("There was a problem with the fetch operation:", error);
+        console.error("There was a problem with fetching the products:", error);
     }); //catch any errors, if any
 
 //task 3: display product details dynamically
 //already showed name, price, image--added company name
+
+//task 4: handle errors gracefully
+//already had added .catch to the end of the fetch call
