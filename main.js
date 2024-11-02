@@ -22,7 +22,7 @@ fetch("https://www.course-api.com/javascript-store-products")
             //using forEach to show each product's name under the image
 
             const productInfo = document.createElement("p");
-            productInfo.textContent = `${product.fields.company}: ${product.fields.name}, $${product.fields.price}`;
+            productInfo.textContent = `[${product.fields.company}] ${product.fields.name}: $${product.fields.price}`;
             //display the product company/brand, name, and price
 
             listItem.appendChild(productImage);
