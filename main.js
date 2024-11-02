@@ -1,6 +1,7 @@
 //task 2: fetch products from the API using fetch and promises
 
 const productList = document.getElementById("productList");
+const productImages = document.getElementById("productImages");
 //connecting html list to js list
 
 fetch("https://www.course-api.com/javascript-store-products")
@@ -9,14 +10,23 @@ fetch("https://www.course-api.com/javascript-store-products")
             throw new Error("Network response not ok.");
         }
         return response.json();
-    }) //fetch the list from the api into json format
+    })
     .then(products => {
         products.forEach(product => {
-            const listItem = document.createElement("li")
-            listItem.textContent = `${product.fields.name} - $${product.fields.price}`;
+            const listItem = document.createElement("li");
+            const productImage = document.createElement("img");
+            productImage.src = product.fields.image[0].url;
+            productImage.alt = product.fields.name;
+            productImage.style.width = "250px"; 
+            //using forEach to show each product's name under the image
+            const productInfo = document.createElement("p");
+            productInfo.textContent = `${product.fields.name} - $${product.fields.price}`;
+            //display the product name and price
+            listItem.appendChild(productImage);
+            listItem.appendChild(productInfo);
             productList.appendChild(listItem);
         });
-    }) //for each item in the list, display it on the html page
+    })
     .catch(error => {
         console.error("There was a problem with the fetch operation:", error);
-    }); //display errors if any
+    }); //catch any errors, if any
