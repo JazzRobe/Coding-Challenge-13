@@ -14,14 +14,17 @@ fetch("https://www.course-api.com/javascript-store-products")
     .then(products => {
         products.forEach(product => {
             const listItem = document.createElement("li");
+
             const productImage = document.createElement("img");
             productImage.src = product.fields.image[0].url;
             productImage.alt = product.fields.name;
             productImage.style.width = "250px"; 
             //using forEach to show each product's name under the image
+
             const productInfo = document.createElement("p");
-            productInfo.textContent = `${product.fields.name} - $${product.fields.price}`;
-            //display the product name and price
+            productInfo.textContent = `${product.fields.company}: ${product.fields.name}, $${product.fields.price}`;
+            //display the product company/brand, name, and price
+
             listItem.appendChild(productImage);
             listItem.appendChild(productInfo);
             productList.appendChild(listItem);
@@ -30,3 +33,6 @@ fetch("https://www.course-api.com/javascript-store-products")
     .catch(error => {
         console.error("There was a problem with the fetch operation:", error);
     }); //catch any errors, if any
+
+//task 3: display product details dynamically
+//already showed name, price, image--added company name
